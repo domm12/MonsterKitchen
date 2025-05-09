@@ -1,0 +1,36 @@
+# Build artifacts
+*.o
+*.a
+*.so
+*.dll
+*.exe
+*.out
+
+# Build folders
+/build/
+/bin/
+obj/
+cmake-build-*/
+build-*/
+
+# IDE files
+.vscode/
+.idea/
+*.sln
+*.vcxproj
+*.iml
+
+# Dependency directories
+/vendor/
+/libs/
+dependencies/
+
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
