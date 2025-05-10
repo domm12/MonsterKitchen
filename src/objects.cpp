@@ -224,9 +224,17 @@ int Ingredient::get_dif(Object* obj){
     if(!obj || type() != obj->type()) return 10;
     Ingredient* _obj = static_cast<Ingredient*>(obj);
     if(strcmp(name, _obj->name) == 0){
-        int dif = 1;
+        int dif = 0;
         for(int  i = 0; i < cur_spice; i++){
-            dif += spices[i]->get_dif(_obj->spices[i]);
+            bool found = false;
+            for(int j = 0; j < _obj->cur_spice; j++){
+                if(spices[i]->name == _obj->spices[j]->name){
+                    dif += spices[i]->get_dif(_obj->spices[i]);
+                    found = true;
+                    break;
+                }
+            }
+            if(!found) dif += 10;
         }
         dif = dif * 2 / (cur_spice * 10);
         dif += (abs(weight - _obj->weight) < 100) ? abs(weight - _obj->weight) / 50 : 2;
@@ -376,8 +384,6 @@ int Utensils::get_dif(Object* obj){
     for(int  i = 0; i < cur_size; i++){
         dif += insides[i]->get_dif(_obj->insides[i]);
     }
-    dif = dif * 9 / (cur_size * 10);
-    dif += (strcmp(name, _obj->name) != 0);
     return dif;
 }
 

@@ -18,14 +18,15 @@ OBJS = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 # Executable name
 TARGET = $(BIN_DIR)/kitchen
 
-# Linker flags with explicit libraries
+# Linker flags
 LDFLAGS = `pkg-config --libs raylib`
 
-# Create directories if they don't exist
-$(shell mkdir -p $(OBJ_DIR) $(BIN_DIR))
-
 # Default target
-all: $(TARGET)
+all: dirs $(TARGET)
+
+# Create directories if they don't exist
+dirs:
+	mkdir -p $(OBJ_DIR) $(BIN_DIR)
 
 # Linking rule
 $(TARGET): $(OBJS)
@@ -38,6 +39,12 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 # Run the game
 run: all
 	./$(TARGET)
+
+# Debug target: builds with debug symbols and starts gdb
+debug: CXXFLAGS += -g
+debug: clean dirs all
+	@echo "Starting GDB..."
+	gdb -ex run --args ./$(TARGET)
 
 # Clean build files
 clean:
