@@ -4,7 +4,7 @@
 
 #define CAP_INVENTORY 20
 #define NAME_LEN 20
-#define DISH_SIZE 10
+#define MEAL_SIZE 4
 #define MAX_SANITY 100
 
 class Cheff{
@@ -12,19 +12,19 @@ class Cheff{
     int cur_inv;
     const char *name;
     int sanity;
-    Object* dish[DISH_SIZE];
-    int cur_dish;
+    Object* meal[MEAS_SIZE];
+    int cur_meal;
     static const char* funnyLine;
     public:
     Cheff(const char* n);
     void use_station(Station* s);
-    int serve(Object* (&example_dish)[DISH_SIZE], int size);
+    int serve(Object* (&example_meal)[MEAL_SIZE], int size);
     static void say_funny();
     Object* use(int i);
     Object* use(const char* _name);
     void take(Object* obj);
-    void gather_dish(const char* _name);
-    void show_dish();
+    void gather_meal(const char* _name);
+    void show_meal();
     void put(int i, Object* uten);
     void put(const char* _name, Object* uten);
     void put(int i, Station* st);

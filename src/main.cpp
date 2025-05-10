@@ -10,7 +10,7 @@ int main(){
     uniform_int_distribution<mt19937::result_type> dist6(1, 6);
     uniform_int_distribution<mt19937::result_type> dist25(-25, 25);
     uniform_int_distribution<mt19937::result_type> dist50(-50, 50);
-    //example dish
+    //example meal
     Utensils _bowl("bowl", Boil, 10);
     Spice _curry("curry", 15);
     Spice _chilli("chilli", 10);
@@ -41,12 +41,12 @@ int main(){
     _bowl.put(&_pork);
     //_bowl.show();
     int ed_size = 1;
-    Object* example_dish[DISH_SIZE];
-    example_dish[0] = &_bowl;
+    Object* example_meal[MEAL_SIZE];
+    example_meal[0] = &_bowl;
     
     //kitchen
     Stove stov;
-    Dishwasher washer;
+    mealwasher washer;
     Station crate;
     Station drawer;
     Station table;
@@ -119,13 +119,13 @@ int main(){
         stov.turn_off(0);
         //David.take(table.get("pot"));
         David.put("pork", David.use("bowl"));
-        David.gather_dish("bowl");
-        cout << "David's dish" << endl;
-        David.show_dish();
-        cout << "\n\nExample dish" << endl;
-        example_dish[0]->show();
-        //David.serve(example_dish, ed_size);
-        cout << "\n\nDifference between dishes is " << David.serve(example_dish, ed_size) << endl;
+        David.gather_meal("bowl");
+        cout << "David's meal" << endl;
+        David.show_meal();
+        cout << "\n\nExample meal" << endl;
+        example_meal[0]->show();
+        //David.serve(example_meal, ed_size);
+        cout << "\n\nDifference between meales is " << David.serve(example_meal, ed_size) << endl;
     }
     catch(const char* s) {cout << s << endl;}
     return 0;
