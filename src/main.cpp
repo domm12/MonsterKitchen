@@ -46,7 +46,7 @@ int main(){
     
     //kitchen
     Stove stov;
-    mealwasher washer;
+    Dishwasher washer;
     Station crate;
     Station drawer;
     Station table;

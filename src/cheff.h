@@ -12,7 +12,7 @@ class Cheff{
     int cur_inv;
     const char *name;
     int sanity;
-    Object* meal[MEAS_SIZE];
+    Object* meal[MEAL_SIZE];
     int cur_meal;
     static const char* funnyLine;
     public:
