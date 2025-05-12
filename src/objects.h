@@ -1,5 +1,6 @@
 #pragma once
 #include <typeinfo>
+#include "sprite.h"
 using namespace std;
 
 #define CAP_UTEN_SIZE 10
@@ -36,7 +37,7 @@ enum TypeU{
 };
 class Ingredient;
 
-class Object{
+class Object : Sprite{
     public:
     const char* name;
     Object(const char* n);

@@ -1,4 +1,5 @@
 #pragma once
+#include "sprite.h"
 #include "objects.h"
 
 #define CAP_STATION_STORAGE 4
@@ -12,7 +13,7 @@ enum StoveSt{
     On
 };
 
-class Station{
+class Station : Sprite{
     protected:
     Object* storage[CAP_STATION_STORAGE];
     public:
