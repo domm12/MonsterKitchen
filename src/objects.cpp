@@ -28,6 +28,13 @@ int Object::get_dif(Object* obj){return 0;}
 const type_info& Object::type() {
     return typeid(*this);
 }
+void Object::overwr(){
+    cout << "1";
+}
+ostream& operator<<(ostream& os, const Object& obj) {
+    os << obj.name;
+    return os;
+}
 
 Spice::Spice(const char* n = "air", int w = 0):Object(n), weight(w){}
 const type_info& Spice::type() {
@@ -92,6 +99,18 @@ Ingredient::Ingredient(const char* n, StateI st, int rt, int bt, int ew, int w, 
     roast_lvl = NoRoast;
     boil_lvl = NoBoil;
     cleanliness = clean;
+    cur_spice = 0;
+    heat = 0;
+}
+Ingredient::Ingredient(const char* n, StateI st, int rt, int bt, int ew, int w):Object(n){
+    state = st;
+    roast_toughness = rt;
+    boil_toughness = bt;
+    example_weight = ew;
+    weight = w;
+    roast_lvl = NoRoast;
+    boil_lvl = NoBoil;
+    cleanliness = false;
     cur_spice = 0;
     heat = 0;
 }
@@ -209,6 +228,9 @@ void Ingredient::show(){
         spices[i]->show();
     }
     cout << "-----------" << endl;
+}
+void Ingredient::overwr(){
+    cout << "2";
 }
 void Ingredient::change_w(int w){
     if(state != StateI::Solid)

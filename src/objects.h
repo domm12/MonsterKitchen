@@ -56,6 +56,8 @@ class Object{
     virtual Ingredient cut(Object* obj, int w);
     virtual int get_dif(Object* obj);
     virtual const type_info& type();
+    friend ostream& operator<<(ostream& os, const Object& obj);
+    void overwr();
 };
 
 class Spice : public Object {
@@ -97,6 +99,7 @@ class Ingredient : public Object {
     int boil_toughness;
     public:
     Ingredient(const char* n, StateI st, int rt, int bt, int ew, int w, bool clean);
+    Ingredient(const char* n, StateI st, int rt, int bt, int ew, int w);
     void roast(int heat);
     void boil(int heat);
     void clean();
@@ -110,6 +113,7 @@ class Ingredient : public Object {
     friend void Knife::grate(Object* ing);
     int get_dif(Object* obj);
     const type_info& type();
+    void overwr();
 };
 
 class Utensils : public Object {
