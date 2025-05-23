@@ -37,7 +37,7 @@ enum TypeU{
 };
 class Ingredient;
 
-class Object : Sprite{
+class Object : public Sprite{
     public:
     const char* name;
     Object(const char* n);

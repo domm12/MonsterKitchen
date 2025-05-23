@@ -9,7 +9,7 @@ int abs(int a){
     return (a >= 0)? a : -a;
 }
 
-Object::Object(const char* n):name(n){}
+Object::Object(const char* n):name(n), Sprite(){}
 void Object::roast(int heat){}
 void Object::boil(int heat){}
 void Object::clean(){}

@@ -13,7 +13,7 @@ enum StoveSt{
     On
 };
 
-class Station : Sprite{
+class Station : public Sprite{
     protected:
     Object* storage[CAP_STATION_STORAGE];
     public:

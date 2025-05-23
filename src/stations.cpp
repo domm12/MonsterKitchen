@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Station::Station():storage(){}
+Station::Station():storage(), Sprite(){}
 void Station::use(){}
 Object* Station::use_obj(int i){
     if(i >= CAP_STATION_STORAGE || !storage[i]) throw "There is nothing on that position";
