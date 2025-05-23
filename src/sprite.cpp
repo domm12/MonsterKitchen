@@ -3,8 +3,21 @@
 
 Sprite* map[MAX_MAP_HEIGHT][MAX_MAP_WIDTH];
 
-Sprite::Sprite(Texture2D t, int x, int y, bool w, int l):texture(t), pos_x(x), pos_y(y), walkable(w), layer(l){}
-Sprite::Sprite():Sprite(DEFAULT_TEXTURE, -100, -100, true, 0){}
+Texture2D Sprite::default_texture = {};
+
+Sprite::Sprite(Texture2D t, int x, int y, bool w, int l):pos_x(x), pos_y(y), walkable(w), layer(l){
+    if(t.id == 0){
+        texture = default_texture;
+    }
+    else{
+        texture = t;
+    }
+}
+Sprite::Sprite():Sprite({}, -100, -100, true, 0){}
+
+void Sprite::default_texture_load(){
+    default_texture = LoadTexture("img/default.png");
+}
 
 void Sprite::draw(){
     DrawTexture(texture, pos_x, pos_y, WHITE);

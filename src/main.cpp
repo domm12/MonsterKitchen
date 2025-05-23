@@ -5,6 +5,8 @@
 using namespace std;
 
 int main(){
+    InitWindow(640, 538, "Monster Kitchen");
+    Sprite::default_texture_load();
     random_device dev;
     mt19937 rng(dev());
     uniform_int_distribution<mt19937::result_type> dist6(1, 6);
